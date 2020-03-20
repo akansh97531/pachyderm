@@ -891,7 +891,7 @@ func (c APIClient) Compact() error {
 	return err
 }
 
-// GetObj gets the content of an obj.
+// ObjReader gets the content of an obj.
 func (c APIClient) ObjReader(obj string) (io.ReadCloser, error) {
 	getObjClient, err := c.ObjectAPIClient.GetObj(
 		c.Ctx(),
@@ -903,7 +903,7 @@ func (c APIClient) ObjReader(obj string) (io.ReadCloser, error) {
 	return grpcutil.NewStreamingBytesReader(getObjClient, nil), nil
 }
 
-// PutObj puts an obj.
+// ObjWriter puts an obj.
 func (c APIClient) ObjWriter(obj string) (io.WriteCloser, error) {
 	return c.newPutObjWriteCloser(obj)
 }
